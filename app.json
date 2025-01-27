@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "proyecto1",
-    "slug": "proyecto1",
+    "name": "Login",
+    "slug": "Login",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -19,10 +19,11 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.Login"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/vedruna.png"
     }
   }
 }
