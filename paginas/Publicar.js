@@ -10,6 +10,57 @@ const Stack = createNativeStackNavigator();
 export function Publicar({navigation}) {
     const [titulo, setTitulo] = useState('');
     const [descripcion, setDescripcion] = useState('');
+
+    // Funcion que inserta los datos en Mongo
+    const crearPublicacion = async (titulo, descripcion) => {
+        try{
+            // Usamos la funcion para registrar en MongoDB
+            // await registrarEnAtlas()
+        } catch (error) {
+            console.error('Error al publicar: ', error.message);
+            Alert.alert('Error', error.message);
+        }
+    }
+
+    const registrarEnAtlas = async (uid) => {
+        const userData = {
+          user_id: uid, // UID del usuario generado por Firebase
+          titulo: titulo,
+          comentario: descripcion,
+          image_url: "", // Valor predeterminado (puede ser modificado más adelante)
+        };
+    
+        try {
+          const response = await fetch("http://192.168.15.73:8080/proyecto01/publicaciones", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(userData),
+          });
+    
+          if (!response.ok) {
+            const errorResponse = await response.text();
+            console.error("Respuesta del servidor:", errorResponse);
+            throw new Error("Error al registrar en MongoDB: " + errorResponse);
+          }
+    
+          const data = await response.json();
+          console.log("Post registrado en la base de datos:", data);
+        } catch (error) {
+          console.error("Error al registrar en MongoDB:", error.message);
+        }
+      };
+    
+      // Manejar el evento de registro
+      const handleRegister = async () => {
+        if (!titulo || !descripcion) {
+          Alert.alert('Error', 'Por favor, complete todos los campos.');
+          return;
+        }
+        await crearPublicacion(titulo, descripcion);
+      };
+
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>PUBLICACIÓN</Text>
@@ -25,8 +76,7 @@ export function Publicar({navigation}) {
               multiline={true} // Permite que el texto se alinee arriba si es necesario
               textAlignVertical="top" // Alinea el texto arriba a la izquierda
               value={titulo}
-              // onChangeText={setEmail}
-            //   onChangeText={(text)=> setEmail(text)}
+              onChangeText={setTitulo}
             />
 
 <Text style={styles.label}></Text>
@@ -39,14 +89,13 @@ export function Publicar({navigation}) {
               multiline={true} // Permite que el texto se alinee arriba si es necesario
               textAlignVertical="top" // Alinea el texto arriba a la izquierda
               value={descripcion}
-              // onChangeText={setEmail}
-            //   onChangeText={(text)=> setEmail(text)}
+              onChangeText={setDescripcion}
             />
 
             <TouchableOpacity
                         // Antes de impelmentar la función de registro, el boton me mandaba directamente hacia la página de inicio de sesión.
                               // onPress={() => navigation.navigate('Log')}
-                            //   onPress={handleRegister}
+                              onPress={handleRegister}
                               style={{
                                 backgroundColor: '#1e1e1e',
                                 borderWidth: 3,
