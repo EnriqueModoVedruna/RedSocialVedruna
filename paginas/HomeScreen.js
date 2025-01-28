@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import 'react-native-gesture-handler';
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Alert, ScrollView } from 'react-native';
 const logo = require('../assets/vedruna.png');
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -9,15 +9,16 @@ const Stack = createNativeStackNavigator();
 
 export function HomeScreen() {
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.titulo}>HomeScreen</Text>
-    </View>
+    </ScrollView>
   )
+  
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     backgroundColor: '#1e1e1e',
     alignItems: 'center',
     justifyContent: 'center',
