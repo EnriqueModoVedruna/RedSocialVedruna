@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-export function SettingsScreen() {
+export function Cuenta() {
   return (
     <View>
-      <Text>SettingsScreen</Text>
+      <Text>Cuenta</Text>
     </View>
   )
 }

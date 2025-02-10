@@ -48,7 +48,7 @@ export function Publicar({ navigation, route }) {
     };
 
     try {
-      const response = await fetch('http://192.168.15.73:8080/proyecto01/publicaciones', {
+      const response = await fetch('http://192.168.131.73:8080/proyecto01/publicaciones', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   input: {
-    width: '75%',
+    width: '85%',
     height: 40,
     borderColor: '#454242',
     borderWidth: 1,
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   input2: {
-    width: '75%',
+    width: '85%',
     height: '30%',
     borderColor: '#454242',
     borderWidth: 1,

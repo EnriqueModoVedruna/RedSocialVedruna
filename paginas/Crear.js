@@ -54,7 +54,7 @@ export function Crear() {
     };
 
     try {
-      const response = await fetch("http://192.168.15.73:8080/proyecto01/users", {
+      const response = await fetch("http://192.168.131.73:8080/proyecto01/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -10,6 +10,9 @@ import {Log} from './paginas/Log';
 import {Crear} from './paginas/Crear';
 import {Home} from './paginas/Home';
 import {TabNavegation} from './nav/TabNavegation'
+import {NuevaIncidencia} from './paginas/NuevaIncidencia';
+import { Incidencias } from './paginas/Incidencias';
+import {DetailScreen} from './paginas/DetailScreen'
 
 export default function App() {
   
@@ -20,6 +23,9 @@ export default function App() {
         <Stack.Screen name="Log" component={Log} />
         <Stack.Screen name="Crear" component={Crear} />
         <Stack.Screen name="Home" component={TabNavegation} />
+        <Stack.Screen name="Incidencias" component={Incidencias} />
+        <Stack.Screen name="NuevaIncidencia" component={NuevaIncidencia} />
+        <Stack.Screen name="Detail" component={DetailScreen} />
       </Stack.Navigator>
     </NavigationContainer> 
     
