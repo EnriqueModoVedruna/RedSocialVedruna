@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import 'react-native-gesture-handler';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Alert } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage'; // Importa AsyncStorage
 const logo = require('../assets/vedruna.png');
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -21,11 +22,17 @@ export function Log({ navigation }) {
   const login = async() => {
     // login configura que podamos iniciar sesion
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const response = await signInWithEmailAndPassword(auth, email, password);
+      const user = response.user; // Obtén el objeto de usuario de Firebase
+
+      // Guarda el ID del usuario en AsyncStorage
+      await AsyncStorage.setItem('user_Id', user.uid); // user.uid es el ID del usuario en Firebase
+
       Alert.alert('Iniciando sesión','Bienvenido');
       navigation.navigate('Home');
     } catch (error) {
       console.log(error);
+      Alert.alert('Error', 'Credenciales incorrectas o usuario no encontrado.'); // Alerta más específica
     }
   }
 

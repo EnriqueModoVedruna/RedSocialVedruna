@@ -12,11 +12,12 @@ import {
 const logo = require('../assets/formulario.png');
 import { useNavigation } from '@react-navigation/native';
 
+
 // Importaciones de Firebase
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../utils/firebase';
 
-export function Crear() {
+export function Crear({route}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [nick, setNick] = useState('');
@@ -24,6 +25,7 @@ export function Crear() {
   const [apellido1, setApellido1] = useState('');
   const [apellido2, setApellido2] = useState('');
   const navigation = useNavigation();
+  const {user_id} = route.params;
 
   // Función para registrar al usuario en Firebase y MongoDB
   const registerUser = async (email, password) => {
@@ -54,7 +56,7 @@ export function Crear() {
     };
 
     try {
-      const response = await fetch("http://192.168.15.73:8080/proyecto01/users", {
+      const response = await fetch("http://192.168.131.73:8080/proyecto01/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
