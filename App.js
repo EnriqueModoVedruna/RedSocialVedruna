@@ -19,7 +19,7 @@ export default function App() {
 
 
     return<NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Log" component={Log} />
         <Stack.Screen name="Crear" component={Crear} />
         <Stack.Screen name="Home" component={TabNavegation} />

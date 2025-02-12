@@ -146,6 +146,7 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       color: '#84dc3f',
       textAlign: 'center',
+      
     },
     imagen: {
       width: 200,

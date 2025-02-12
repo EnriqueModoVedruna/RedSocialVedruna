@@ -3,13 +3,12 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Alert } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
-export function Publicar({ navigation, route }) {
+export function Publicar({ navigation, route, params }) {
   const [simagen, setImagen] = useState('');
   const [titulo, setTitulo] = useState('');
   const [descripcion, setDescripcion] = useState('');
 
-  // UID del usuario (puedes pasar esto desde la pantalla anterior con `route.params.uid`)
-  const uid = route?.params?.uid || 'default-uid'; // Ajusta esto según cómo manejes el UID
+  const uid = route?.params?.uid; // Con esto recibimos el id del usuario logeado
 
   // Función para seleccionar una imagen desde la galería
   const seleccionarImagen = async () => {
