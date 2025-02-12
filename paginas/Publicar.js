@@ -3,13 +3,12 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Alert } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
-export function Publicar({ navigation, route }) {
+export function Publicar({ navigation, route, params }) {
   const [simagen, setImagen] = useState('');
   const [titulo, setTitulo] = useState('');
   const [descripcion, setDescripcion] = useState('');
 
-  // UID del usuario (puedes pasar esto desde la pantalla anterior con `route.params.uid`)
-  const uid = route?.params?.uid || 'default-uid'; // Ajusta esto según cómo manejes el UID
+  const uid = route?.params?.uid; // Con esto recibimos el id del usuario logeado
 
   // Función para seleccionar una imagen desde la galería
   const seleccionarImagen = async () => {
@@ -48,7 +47,7 @@ export function Publicar({ navigation, route }) {
     };
 
     try {
-      const response = await fetch('http://192.168.15.73:8080/proyecto01/publicaciones', {
+      const response = await fetch('http://192.168.131.73:8080/proyecto01/publicaciones', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -142,7 +141,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   input: {
-    width: '75%',
+    width: '85%',
     height: 40,
     borderColor: '#454242',
     borderWidth: 1,
@@ -154,7 +153,7 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   input2: {
-    width: '75%',
+    width: '85%',
     height: '30%',
     borderColor: '#454242',
     borderWidth: 1,
